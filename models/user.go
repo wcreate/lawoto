@@ -26,6 +26,12 @@ const (
 	Gender_Female
 )
 
+const (
+	// 用户类型
+	User_General = iota
+	User_Lawyer
+)
+
 var (
 	reserveUsers = map[string]string{
 		"admin":    "admin",

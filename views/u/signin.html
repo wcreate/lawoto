@@ -8,16 +8,46 @@
         <p class="description text-muted">欢迎加入最专业的社区</p>
     </div>
     <div class="row bg-white login">
-        <div class="col-md-4 col-sm-12 col-md-push-7 login-wrap">
-            {{template "u/signup-part.html".}}
+        <div class="col-md-4 col-sm-12 col-md-push-1 login-wrap">
+            <h1 class="h4 text-muted login-title">用户登录</h1> {{template "msgerr.html".}}
+            <form action="/u/signin" method="POST" role="form" class="mt30">
+                <div class="form-group">
+                    <label for="email" class="required control-label">Email</label>
+                    <input type="email" class="form-control" name="email" required placeholder="hello@163.com"> {{if .xsrfdata}}{{.xsrfdata}}{{end}}
+                </div>
+                <div class="form-group">
+                    <label for="password" class="required control-label">密码</label>
+                    <input type="password" class="form-control" name="password" required placeholder="密码">
+                </div>
+                <div class="form-group clearfix">
+                    <div class="checkbox pull-left">
+                        <label>
+                            <input name="remember" type="checkbox" value="1" checked> 记住登录状态</label>
+                        <a href="/u/forgot">找回密码</a> |
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right pl20 pr20">登录</button>
+                </div>
+            </form>
         </div>
         <div class="login-vline hidden-sm hidden-xs"></div>
-        <div class="col-md-4 col-md-pull-3 col-sm-12 login-wrap">
-            {{template "u/signin-part.html".}}
+        <div class="col-md-4 col-md-push-3 col-sm-12 login-wrap">
+            <h1 class="h4 text-muted login-title">第三方账号登录</h1>
+            <div class="widget-login mt30">
+                <a href="/u/oauth/weibo" class="btn btn-block btn-weibo"><i class="icon icon-weibo"></i> 微博登录</a>
+                <a href="/u/oauth/qq" class="btn btn-block btn-qq"><i class="icon icon-qq"></i> QQ 登录</a>
+                <a href="/u/oauth/weixin" class="btn btn-block btn-weixin"><i class="icon icon-weixin"></i> 微信登录</a>
+            </div>
+            <div class="widget-login mt30">
+                <blockquote>
+                    <p>如果您还没有注册帐户的话，请先注册。</p>
+                </blockquote>
+                <div class="form-group clearfix">
+                    <a href="/u/signup" class="btn btn-primary pl20 pr20 pull-left">注册</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="text-center col-md-12 login-link">
-        <a href="/u/forgot">找回密码</a> |
         <a href="/">首页</a>
     </div>
 </div>

@@ -11,6 +11,7 @@ import (
 	"github.com/astaxie/beego/validation"
 	"github.com/wcreate/lawoto/ctrls"
 	"github.com/wcreate/lawoto/models"
+	"github.com/wcreate/lawoto/setting"
 	"github.com/wcreate/lawoto/utils"
 )
 
@@ -78,6 +79,12 @@ func (self *SignupController) Post() {
 
 	if err := u.Read("Email"); err != orm.ErrNoRows {
 		flash.Error("此账号已存在不能使用~")
+		flash.Store(&self.Controller)
+		return
+	}
+
+	if !setting.Cpt.VerifyReq(self.Ctx.Request) {
+		flash.Error("验证码不正确~")
 		flash.Store(&self.Controller)
 		return
 	}

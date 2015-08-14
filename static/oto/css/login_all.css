@@ -1,1 +1,151 @@
-body{background-color:#f3f3f3}.header{margin:50px 0 30px}.header h1{margin-bottom:5px}.header .description{font-size:16px;color:#999}.logo img{height:36px}.login-wrap{padding:50px 0}.login-link{margin:30px 0 80px;color:#ddd}.login-link a{margin:0 10px;color:#999}.btn-sn-more{height:30px}.widget-login [class*="btn-sn-"]{margin:0 2px 6px 0}.login{position:relative}.login-vline{position:absolute;height:80%;border-left:1px solid #EEE;left:50%;top:45px}@media (min-width: 768px){.login-wrap{padding:50px 20px}}@media (max-width: 767px){.header{margin:-50px 0 20px}.login-wrap{padding:20px}.widget-login .btn{display:block}button[type="submit"]{width:100%}#showMore{display:none}}
+body {
+    background-color: #f3f3f3
+}
+
+.header {
+    margin: 50px 0 30px
+}
+
+.header h1 {
+    margin-bottom: 5px
+}
+
+.header .description {
+    font-size: 16px;
+    color: #999
+}
+
+.logo img {
+    height: 36px
+}
+
+.login-wrap {
+    padding: 50px 0
+}
+
+.login-link {
+    margin: 30px 0 80px;
+    color: #ddd
+}
+
+.login-link a {
+    margin: 0 10px;
+    color: #999
+}
+
+.btn-sn-more {
+    height: 30px
+}
+
+.widget-login [class*="btn-sn-"] {
+    margin: 0 2px 6px 0
+}
+
+.login {
+    position: relative
+}
+
+.login-vline {
+    position: absolute;
+    height: 80%;
+    border-left: 1px solid #EEE;
+    left: 50%;
+    top: 45px
+}
+
+@media (min-width: 768px) {
+    .login-wrap {
+        padding: 50px 20px
+    }
+}
+
+@media (max-width: 767px) {
+    .header {
+        margin: -50px 0 20px
+    }
+    .login-wrap {
+        padding: 20px
+    }
+    .widget-login .btn {
+        display: block
+    }
+    button[type="submit"] {
+        width: 100%
+    }
+    #showMore {
+        display: none
+    }
+}
+
+
+#wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    padding-top: 100px;
+}
+
+.btn-weibo {
+    background-color: #ff6666;
+    color: #fff !important;
+}
+
+.btn-weibo:hover {
+    background-color: #ff4d4d;
+}
+
+.btn-weibo:active {
+    background-color: #E64545;
+}
+
+.btn-qq {
+    background-color: #418ae2;
+    color: #fff !important;
+}
+
+.btn-qq:hover {
+    background-color: #2d7fe2;
+}
+
+.btn-qq:active {
+    background-color: #1773e2;
+}
+
+.btn-weixin {
+    background-color: #e34a33;
+    color: #fff !important;
+}
+
+.btn-weixin:hover {
+    background-color: #e34a33;
+}
+
+.btn-weixin:active {
+    background-color: #e34a33;
+}
+
+.btn-facebook {
+    background-color: #3a5799;
+    color: #fff !important;
+}
+
+.btn-facebook:hover {
+    background-color: #264a9b;
+}
+
+.btn-facebook:active {
+    background-color: #244081;
+}
+
+.btn-twitter {
+    background-color: #1eb5ee;
+    color: #fff !important;
+}
+
+.btn-twitter:hover {
+    background-color: #00ace6;
+}
+
+.btn-twitter:active {
+    background-color: #009dd2;
+}
+
