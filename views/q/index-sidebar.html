@@ -1,0 +1,57 @@
+{{if .userid}}
+<div class="widget-messages">
+    <a class="widget-messages__item" href="/u/{{.username}}/bookmarks">我的收藏</a>
+    <a id="followingQuestionCount" class="widget-messages__item" href="/q/following">
+        我关注的问题</a>
+    <a id="inviteCount" class="widget-messages__item" href="/u/{{.username}}/invited">
+        邀请我回答的</a>
+    <a class="widget-messages__item" href="/u/{{.username}}/invitation">邀请朋友加入</a>
+</div>
+<div class="sfad-sidebar">
+    <div class="sfad-item" data-adn="ad-981183" id="adid-981183">
+        <button class="close" type="button" aria-hidden="true">&times;</button>
+    </div>
+    <div class="sfad-item" data-adn="ad-981184" id="adid-981184">
+        <button class="close" type="button" aria-hidden="true">&times;</button>
+    </div>
+    <div class="sfad-item" data-adn="ad-981694" id="adid-981694">
+        <button class="close" type="button" aria-hidden="true">&times;</button>
+    </div>
+</div>
+<div class="widget-box">
+    <h2 class="h4 widget-box__title">关注 <a href="/u/{{.username}}/following/tags">0</a> 个标签</h2>
+    <ul class="taglist--inline multi">
+    </ul>
+</div>
+{{else}}
+<aside class="widget-welcome">
+    <h3 class="top-title">关于我们</h3>
+    <p>LawyerOnline 中国最大的律师交流互动平台：聚集了中国最优秀的律师，法律咨询，案例分享，如果你想快速获得成长，那就加入我们吧..</p>
+    <ul class="list-unstyled">
+        <li> <a href="/u/signin/" class="btn btn-default">马上登录LawyerOnline帐号</a> </li>
+        <li><a href="/u/signup/" class="btn btn-default">立即注册LawyerOnline帐号</a> </li>
+    </ul>
+</aside>
+<div style="margin-top: 20px">
+    <a href="/u/signup/" target="_blank" style="display: block; margin-top: 5px"><img src="/static/oto/img/joinus.png" alt="加入我们" /></a>
+</div>
+{{end}}
+<div class="widget-box">
+    <h2 class="h4 widget-box__title">热议标签 <a href="/tags" title="更多">&raquo;</a></h2>
+    <ul class="taglist--inline multi">
+        <li class="tagPopup"><a class="tag" data-toggle="popover" data-id="1040000000089436" data-original-title="javascript" href="/t/javascript">javascript</a></li>
+    </ul>
+</div>
+<div class="widget-box">
+    <h2 class="h4 widget-box__title">最近回复的</h2>
+    <ul class="widget-links list-unstyled">
+    {{if .lastest_replys}} {{range .lastest_replys}}
+        <li class="widget-links__item">
+            <a href="/q/{{.Id}}">{{.Title}}</a>
+            <small class="text-muted">{{.ReplyCount}} 回答 </small>
+        </li>
+        {{end}}
+    </ul>
+    {{end}}
+</div>
+

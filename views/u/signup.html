@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="header text-center">
+        <h1>
+        <a href="/" class="logo">
+            <img src="/static/oto/logo_2.png" alt="LaywerOnline">
+        </a>
+    </h1>
+        <p class="description text-muted">欢迎加入最专业的社区</p>
+    </div>
+    <div class="row bg-white login">
+        <div class="col-md-4 col-sm-12 col-md-push-7 login-wrap">
+            {{template "u/signin-part.html".}}
+        </div>
+        <div class="login-vline hidden-sm hidden-xs"></div>
+        <div class="col-md-4 col-md-pull-3 col-sm-12 login-wrap">
+            {{template "u/signup-part.html".}}
+        </div>
+    </div>
+    <div class="text-center col-md-12 login-link">
+        <a href="/u/forgot">找回密码</a> |
+        <a href="/">首页</a>
+    </div>
+</div>

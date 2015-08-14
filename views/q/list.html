@@ -1,0 +1,46 @@
+{{template "navbar.html".}}
+
+<div class="wrap">
+    <div class="post-topheader">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/q/lastest">问答</a></li>
+                        <li class="active">问答详情</li>
+                    </ol>
+                    <h1 class="h3 title" id="questionTitle" data-id="{{.q.Id}}">
+                        <a href="/q/{{.q.Id}}">{{if .q.Title}}{{str2html .q.Title}}{{end}}</a>
+                    </h1>
+                    <div class="author">
+                        <a href="/u/{{.q.Author}}">
+                            {{if .avatar}}
+                                <img class="avatar-24 " src="{{.avatar}}" alt="{{.q.Author}}">
+                            {{end}}
+                            <strong>{{.q.Author}}</strong>
+                            </a>
+                        <strong class="text-black">{{timesince .q.Created}}提问，{{timesince .q.Updated}}更新</strong>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <ul class="widget-action--ver list-unstyled">
+                        <li>
+                            <button type="button" id="sideFollow" class="btn btn-success btn-sm" data-id="{{.q.Id}}" data-do="follow" data-type="question" data-toggle="tooltip" data-placement="right" title="关注后将获得更新提醒">关注
+                            </button>
+                            <strong>0</strong> 关注
+                        </li>
+                        <li>
+                            <button type="button" id="sideBookmark" class="btn btn-default btn-sm" data-id="{{.q.Id}}" data-type="question">收藏
+                            </button>
+                            <strong id="sideBookmarked">{{.q.FavoriteCount}}</strong> 收藏，
+                            <strong id="topic-views" class="no-stress">{{.q.Views}}</strong> 浏览
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{template "q/list-content.html".}}
+</div>
+
+{{template "footer.html".}}

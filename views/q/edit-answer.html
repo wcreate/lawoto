@@ -1,0 +1,53 @@
+{{template "navbar.html".}}
+
+<div class="publish wrap">
+    <div class="wrap publish">
+        <div class="container">
+            <h1 class="h4 mt20">编辑答案</h1>
+            {{template "msgerr.html" .}}
+            <form id="answer" method="POST" role="form" action="/q/{{.q.Id}}/a/{{.a.Id}}/edit">
+                <div class="panel panel-default question-view">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <a href="/q/{{.q.Id}}" target="_blank" class="pull-right"><span class="glyphicon glyphicon-new-window small"></span></a>
+                        <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">{{.q.Title}}</a></h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div class="fmt">
+                                {{markdown .q.Content}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="answerText" class="editor">
+                    <textarea id="editor-content" name="content" autofocus >{{.a.Content}}</textarea>
+                    {{if .xsrfdata}}{{.xsrfdata}}{{end}}
+                </div>
+                <div class="form-group mt15">
+                    <label class="mr5">编辑原因</label>
+                    <button type="button" class="reasons btn btn-default btn-xs">补充内容</button>
+                    <button type="button" class="reasons btn btn-default btn-xs">添加代码</button>
+                    <button type="button" class="reasons btn btn-default btn-xs">修正错别字及语法</button>
+                    <button type="button" class="reasons btn btn-default btn-xs">修改标题</button>
+                    <button type="button" class="reasons btn btn-default btn-xs">修改标签</button>
+                    <button type="button" class="reasons btn btn-default btn-xs">修改排版</button>
+                    <div class="mt5">
+                        <input type="text" name="log" id="editReason" class="form-control" placeholder="如：添加代码，修改排版等等" value="">
+                    </div>
+                </div>
+                <div class="operations mt20">
+                    <div class="pull-right">
+                        <button data-type="answer" id="publishIt" class="btn btn-primary btn-lg ml20" data-id="{{.a.Id}}" data-do="edit" data-url="" data-text="提交编辑" data-name="" /> 提交编辑
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="clearfix">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="noticeAnswerer" checked> 通知提问者
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "footer.html".}}

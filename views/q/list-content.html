@@ -1,0 +1,111 @@
+<div class="container mt30">
+    <div class="row">
+        <div class="col-xs-12 col-md-9 main">
+            <article class="widget-question__item">
+                <div class="post-col">
+                    <div class="widget-vote">
+                        <button type="button" class="like" data-id="{{.q.Id}}" title="问题对人有帮助，内容完整，我也想知道答案" onclick='javascript:$.get("/hot/q/{{.q.Id}}/like/?ver="+(new Date()).valueOf(), {Action:"get"}, function (data, textStatus){this;$("#qscore-{{.q.Id}}").html(data);});'>
+                            <span class="sr-only">问题对人有帮助，内容完整，我也想知道答案</span>
+                        </button>
+                        <span class="count" id="qscore-{{.q.Id}}">{{metric .q.Hotscore}}</span>
+                        <button type="button" class="hate" data-id="{{.q.Id}}" title="问题没有实际价值，缺少关键内容，没有改进余地" onclick='javascript:$.get("/hot/q/{{.q.Id}}/hate/?ver="+(new Date()).valueOf(), {Action:"get"}, function (data, textStatus){this;$("#qscore-{{.q.Id}}").html(data);});'>
+                            <span class="sr-only">问题没有实际价值，缺少关键内容，没有改进余地</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="post-offset">
+                    <div class="question fmt">
+                        {{markdown .q.Content}}
+                    </div>
+                    {{if .q.Tags}}
+                    <ul class="taglist--inline mb20">
+                        {{$tags:=tags .q.Tags ","}} {{range $tags}}
+                        <li class="tagPopup"><a class="tag" href="/q/tag/{{.}}/">{{str2html .}}</a></li>
+                        {{end}}
+                    </ul>
+                    {{end}}
+                </div>
+                <div class="post-opt">
+                    <ul class="list-inline mb0">
+                        <li><a href="/q/{{.q.Id}}/" class="i-link">链接</a></li>
+                        {{if and (or (eq .userrole -1000) (eq .q.Uid .userid)) .userid}}
+                        <li><a href="/q/{{.q.Id}}/edit/" class="i-edit" data-toggle="tooltip" data-placement="bottom" rel="tooltip" title="" data-original-title="修改问题后回答者会收到提醒">修改</a></li>
+                        {{if (and (or (eq .userrole -1000) (eq .q.Uid .userid)) (or (eq .q.Ctype 0) (eq .q.Ctype 1)))}}
+                        <li><a href="/q/{{.q.Id}}/close/">关闭</a> </li>
+                        </li>{{end}} {{if and (or (eq .userrole -1000) (eq .q.Uid .userid)) (eq .q.Ctype -1)}}
+                        <li><a href="/q/{{.q.Id}}/open/">开放</a> </li>{{end}} {{end}}
+                    </ul>
+                </div>
+            </article>
+            <div class="widget-answers">
+                <div class="btn-group pull-right" role="group">
+                    <a href="#" id="sortby-rank" class="btn btn-default btn-xs active">默认排序</a>
+                    <a href="#" id="sortby-created" class="btn btn-default btn-xs">时间排序</a>
+                </div>
+                <h2 class="title h4 mt30 mb20 post-title" id="answers-title">{{.q.ReplyCount}}  个回答</h2> {{$userrole:=.userrole}} {{$auid:=.q.Uid}} {{$qid:=.q.Id}} {{$userid:=.userid}} {{if .replys}} {{range .replys}}
+                <article class="clearfix widget-answers__item" id="a-{{.Id}}">
+                    <div class="post-col">
+                        <div class="widget-vote">
+                            <button type="button" class="like" data-id="{{.Id}}" title="问题对人有帮助，内容完整，我也想知道答案" onclick='javascript:$.get("/hot/a/{{.Id}}/like/?ver="+(new Date()).valueOf(), {Action:"get"}, function (data, textStatus){this;$("#ascore-{{.Id}}").html(data);});'>
+                                <span class="sr-only">问题对人有帮助，内容完整，我也想知道答案</span>
+                            </button>
+                            <span class="count" id="ascore-{{.Id}}">{{metric .Hotscore}}</span>
+                            <button type="button" class="hate" data-id="{{.Id}}" title="问题没有实际价值，缺少关键内容，没有改进余地" onclick='javascript:$.get("/hot/a/{{.Id}}/hate/?ver="+(new Date()).valueOf(), {Action:"get"}, function (data, textStatus){this;$("#ascore-{{.Id}}").html(data);});'>
+                                <span class="sr-only">问题没有实际价值，缺少关键内容，没有改进余地</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="post-offset">
+                        <a href="/u/{{.Author}}"><img class="avatar-24" src="#" alt=""></a>
+                        <strong><a href="/u/{{.Author}}" class="mr5">{{.Author}}</a></strong>
+                        <span class="ml10 text-muted">
+                                {{timesince .Created}}回答,
+                                </span>
+                        <span class="ml10 text-muted">
+                                {{timesince .Updated}}更新
+                                </span>
+                        <div class="answer fmt mt10">
+                            {{markdown .Content}}
+                        </div>
+                    </div>
+                    <div class="post-opt">
+                        <ul class="list-inline mb0">
+                            {{if and (or (eq $userrole -1000) (eq $auid $userid)) (ne .Ctype 2)}}
+                            <li>
+                                <a href="/q/{{$qid}}/a/{{.Id}}/accept/">采纳答案</a></li>
+                            {{end}}
+                            <li><a href="/q/{{$qid}}/#a-{{.Id}}" class="i-link">链接</a> </li>
+                            {{if and (or (eq $userrole -1000) (eq .Uid $userid)) $userid}}
+                            <li><a href="/q/{{$qid}}/a/{{.Id}}/edit/" data-original-title="修改答案后提问者会收到提醒">修改</a></li>
+                            <li><a href="/q/{{$qid}}/a/{{.Id}}/delete/">删除</a> </li>{{end}} {{if and (or (eq $userrole -1000) (eq $auid $userid)) $userid}}
+                            <li><a href="/q/{{$qid}}/a/{{.Id}}/ignore/" data-cancel="0">忽略</a></li>
+                            {{end}}
+                        </ul>
+                    </div>
+                </article>
+                {{end}}{{end}}
+                <h4>撰写答案</h4>
+                <input type="hidden" value="{{.q.Id}}" id="qid"> {{if (or (eq .q.Ctype 2) (eq .q.Ctype -1)) }}
+                <div class="login-warn">问题已关闭</div>
+                {{else}} {{if .userid}}
+                <form action="/q/{{.q.Id}}/a" method="post" class="editor-wrap" id="editor-form">
+                    <div class="form-group">
+                        <textarea id="editor-content" name="content" placeholder="撰写答案..."></textarea>
+                        {{if .xsrfdata}}{{.xsrfdata}}{{end}}
+                    </div>
+                    <div class="form-group mt15 clearfix">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-lg btn-primary ml20">提交回答</button>
+                        </div>
+                    </div>
+                </form>
+                {{else}}
+                <div class="login-warn">
+                    请先
+                    <a href="/u/signin/">登录</a> 后撰写答案
+                </div>
+                {{end}} {{end}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{{template "navbar.html".}}
+<div class="publish wrap">
+    <div class="container">
+        <h1 class="h4 mt20">提出新问题</h1> {{template "msgerr.html" .}}
+        <form id="question" action="/q/new/" method="post">
+            <div class="form-group">
+                <label for="title" class="sr-only">标题</label>
+                <input id="myTitle" type="text" name="title" required data-error="" autocomplete="off" class="form-control tagClose input-lg" placeholder="标题，用一句话说清你的问题" value="">
+            </div>
+            <div id="titleSuggest" class='panel hidden widget-suggest panel-default'>
+                <div class="panel-body">
+                    <p>
+                        <strong>这些问题可能有你需要的答案</strong>
+                        <button type="button" class="widget-suggest__close btn btn-default btn-xs">关闭提示</button>
+                    </p>
+                    <ul id="qList" class="list-unstyled widget-suggest__list">
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tags" class="sr-only">标签：至少1个，最多5个</label>
+                <input class="tagsInput form-control" data-tags="null" name="tags" type="text" placeholder="标签，如：民法" data-role="tagsinput" />
+            </div>
+            <div id="questionText" class="editor">
+                <textarea id="editor-content" name="content"></textarea>
+                {{if .xsrfdata}}{{.xsrfdata}}{{end}}
+            </div>
+            <div class="operations mt20">
+                <div class="pull-right">
+                    <button data-type="question" id="publishIt" class="btn btn-primary btn-lg ml20" data-id="" data-do="" data-url="" data-text="发布问题" data-name="" /> 发布问题
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{{template "footer.html".}}

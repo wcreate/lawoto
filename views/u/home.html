@@ -1,0 +1,95 @@
+{{template "navbar.html".}}
+
+<header class="bg-gray pt30">
+    <div class="container">
+        <div class="row">
+            <div id="secondary" class="col-md-4">
+                <div class="profile-header media">
+                    <a class="pull-left" href="/u/szlanny">
+                        <img class="media-object avatar-128" src="{{.u.Avatar}}" alt="szlanny" />
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">szlanny</h4>
+                        <ul class="sn-inline">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <ul class="list-unstyled profile-links">
+                    <li>现居城市：{{if eq .me true}} <a href="/u/settings/">填写城市</a>{{else}} {{.u.City}} {{end}}</li>
+                    <li>个人网站：{{if eq .me true}} <a href="/u/settings/">填写个人网站</a>{{else}} {{.u.Website}} {{end}}</li>
+                </ul>
+            </div>
+            <div class="text-right col-md-3">
+                <p class="mt30">
+                    <strong><a class="funsCount" href="/u/szlanny/followed/users">0</a></strong> 个粉丝
+                </p>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 profile">
+                <ul class="list-unstyled profile-ranks">
+                    <li>
+                        <a href="/u/szlanny/rank">
+                            <strong>0</strong>
+                            <span class="text-muted">声望值</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <strong>0</strong>
+                        <span class="text-muted">次被赞</span>
+                    </li>
+                </ul>
+                <div class="profile-bio mono">
+                    <p>个人简介都不给
+                        <(￣ ﹌ ￣)>
+                    </p>
+                </div>
+                <div class="profile-goodjob" id="goodJob" data-id="1030000003029418">
+                    <strong>擅长标签</strong>
+                    <div id="piechart" class="clearfix"></div>
+                    <div class="joindate">
+                        始于 7月29日
+                    </div>
+                </div>
+            </div>
+            <!-- Nav tabs -->
+            <div class="col-md-8">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="/u/szlanny"><span>动态</span></a></li>
+                    <li><a href="/u/szlanny/rank"><span>声望</span></a></li>
+                    <li><a href="/u/szlanny/tags"><span>标签</span></a></li>
+                    <li><a href="/u/szlanny/answers"><span>回答</span> <span
+                                    class="badge">0</span></a></li>
+                    <li><a href="/u/szlanny/questions"><span>提问</span> <span
+                                    class="badge">0</span></a></li>
+                    <li><a href="/u/szlanny/blogs"><span>专栏文章</span> <span
+                                    class="badge">0</span></a></li>
+                    <li><a href="/u/szlanny/bookmarks"><span>收藏</span></a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span>关注的</span> <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/questions/following">关注的问题</a></li>
+                            <li><a href="/u/sszlanny/following/tags">关注的标签 <span
+                                                class="badge">0</span></a></li>
+                            <li><a href="/u/szlanny/following/users">关注的人 <span
+                                                class="badge">0</span></a></li>
+                            <li><a href="/u/szlanny/following/blogs">关注的专栏</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <h2 class="h4">最近动态</h2>
+                <div class="widget-active clearfix">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "footer.html".}}

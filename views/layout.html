@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="LawyerOnline 中国最大的律师交流互动平台" />
+    <meta name="keywords" content="法律 中文 问答 博客 社区" />
+    <title>LawyerOnline 中国最大的律师交流互动平台</title>
+    <script>
+    window.onerror = function(errorMessage, scriptURI, lineNumber, columnNumber, error) {
+
+        if (errorMessage.indexOf('Script error.') > -1) {
+            return;
+        }
+        return console.warn({
+            message: errorMessage,
+            script: scriptURI,
+            line: lineNumber,
+            columnNumber: columnNumber,
+            error: error
+        });
+    };
+    </script>
+    <link rel="stylesheet" href="/static/oto/css/global.css" />
+    {{.Heads}}
+
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="/static/oto/img/ico/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" href="/static/oto/img/ico/apple-touch-icon-iphone.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/oto/img/ico/apple-touch-icon-ipad.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/oto/img/ico/apple-touch-icon-iphone4.png" />
+</head>
+
+<body>
+    {{.LayoutContent}}
+
+    <script src="/static/3rd/jquery/js/jquery.min.js"></script>
+    <script src="/static/3rd/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/oto/js/common.js"></script>
+    {{.Scripts}}
+</body>
+
+</html>

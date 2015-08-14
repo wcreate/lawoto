@@ -1,0 +1,78 @@
+<div class="global-nav">
+    <nav class="container nav">
+        <div class="dropdown m-menu">
+            <a href="javascript:void(0);" id="dLabel" class="visible-xs-block m-toptools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-align-justify"></span>
+                <span class="mobile-menu__unreadpoint"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li class="mobile-menu__item"><a href="/q/lastest/">问答</a></li>
+                <li class="mobile-menu__item"><a href="/b/">文章</a></li>
+                <li class="mobile-menu__item"><a href="/e/">活动</a></li>
+                <li class="mobile-menu__item"><a href="/t/">标签</a></li>
+                <li class="mobile-menu__item"><a href="/u/">榜单</a></li>
+            </ul>
+        </div>
+        <h1 class="logo"><a  class="sf" href="/">LaywerOnline</a></h1>
+        <a href="/u/login" class="visible-xs-block pull-right m-ask m-toptools"><span class="glyphicon glyphicon-log-in"></span></a>
+        <form action="/s" class="header-search pull-left hidden-sm hidden-xs">
+            <button type="submit" class="btn btn-link"><span class="sr-only">搜索</span><span class="glyphicon glyphicon-search"></span></button>
+            <input id="searchBox" name="q" type="text" placeholder="输入关键字搜索" class="form-control" value="">
+        </form>
+        <ul class="menu list-inline pull-left hidden-xs">
+            <li class="menu__item"><a href="/q/lastest/">问答</a></li>
+            <li class="menu__item"><a href="/b/">文章</a></li>
+            <li class="menu__item"><a href="/e/">活动</a></li>
+            <li class="menu__item"><a href="/u/">榜单</a></li>
+            <li class="menu__item dropdown hoverDropdown">
+                <a data-toggle="dropdown" href="/sites" class="more dropdownBtn">
+                    &middot;&middot;&middot;<span class="sr-only">更多</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/t">标签</a></li>
+                    <li><a href="/a">移动 App</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="opts pull-right list-inline hidden-xs">
+            {{if .userid}}
+            <li class="opts__item dropdown hoverDropdown write-btns">
+                <a class="dropdownBtn" data-toggle="dropdown" href="/q/new">撰写<span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="/q/new">提问题</a></li>
+                    <li><a href="/b/new">写文章</a></li>
+                </ul>
+            </li>
+            <li class="opts__item message has-unread">
+                <a href="/u/{{.username}}/ns">
+                    <span class="sr-only">消息</span>
+                    <span id="messageCount" class="glyphicon glyphicon-envelope"></span>
+                </a>
+            </li>
+            <li class="opts__item user dropdown hoverDropdown">
+                <a class="dropdownBtn user-avatar" data-toggle="dropdown" style="background-image: url('{{.useravatar}}')" href="/u/{{.username}}">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="/u/{{.username}}">我的主页</a></li>
+                    <li><a href="/u/{{.username}}/bookmarks">收藏夹</a></li>
+                    <li><a href="/u/{{.username}}/settings">帐号设置</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/u/signout">退出</a></li>
+                    <li><a href="/faq">帮助中心</a></li>
+                    <li><a href="/0x">建议反馈</a></li>
+                </ul>
+            </li>
+            {{else}}
+            <li class="opts__item message has-unread">
+                <a target="_blank" href="/tour">
+                    <span class="sr-only">消息</span>
+                    <span id="messageCount" class="glyphicon glyphicon-envelope"></span>
+                </a>
+            </li>
+            <li class="opts__item">
+                <a href="/u/signin" class="em ml10">登录*注册</a>
+            </li>
+            {{end}}
+        </ul>
+    </nav>
+</div>

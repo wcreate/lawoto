@@ -1,0 +1,42 @@
+{{template "navbar.html".}}
+<div class="publish wrap">
+    <div class="container">
+        <div class="col-xs-12">
+            <h1 class="h4 mt20">编辑问题</h1>
+        </div>
+        {{template "msgerr.html" .}}
+        <form id="editor-form" action="/q/{{.question.Id}}/edit/" method="post">
+            <div class="form-group">
+                <label for="title" class="sr-only">标题</label>
+                <input id="myTitle" type="text" name="title" required autocomplete="off" class="form-control tagClose input-lg" placeholder="标题，用一句话说清你的问题" value="{{.question.Title}}"> 
+            </div>
+            <div class="form-group">
+                <label for="tags" class="sr-only">标签：至少1个，最多5个</label>
+                <input class="tagsInput form-control" name="tags" type="text" placeholder="标签" data-role="tagsinput" value="{{.question.Tags}}" />
+            </div>
+            <div id="questionText" class="editor">
+                <textarea id="editor-content" name="content" autofocus>{{.question.Content}}</textarea>
+                {{if .xsrfdata}}{{.xsrfdata}}{{end}}
+            </div>
+            <div class="form-group mt15">
+                <label class="mr5">编辑原因</label>
+                <button type="button" class="reasons btn btn-default btn-xs">补充内容</button>
+                <button type="button" class="reasons btn btn-default btn-xs">添加代码</button>
+                <button type="button" class="reasons btn btn-default btn-xs">修正错别字及语法</button>
+                <button type="button" class="reasons btn btn-default btn-xs">修改标题</button>
+                <button type="button" class="reasons btn btn-default btn-xs">修改标签</button>
+                <button type="button" class="reasons btn btn-default btn-xs">修改排版</button>
+                <div class="mt5">
+                    <input type="text" name="log" id="editReason" class="form-control" placeholder="如：添加代码，修改排版等等" value="">
+                </div>
+                <div class="operations mt20">
+                    <div class="pull-right">
+                        <button id="publishIt" class="btn btn-primary btn-lg ml20" /> 提交编辑
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{{template "footer.html".}}

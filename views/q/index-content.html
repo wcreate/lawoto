@@ -1,0 +1,67 @@
+<p class="main-title hidden-xs"> 今天，你遇到了什么问题呢？
+    <a id="goAsk" href="/q/new" class="btn btn-primary">我要提问</a>
+</p>
+<ul class="nav nav-tabs nav-tabs-zen mb10">
+    <li role="presentation" {{if .tab}}{{if eq .tab "lastest"}}class="active" {{end}}{{end}}><a href="/q/lastest/">最新问题</a></li>
+    <li role="presentation" {{if .tab}}{{if eq .tab "hotness"}}class="active" {{end}}{{end}}><a href="/q/hotness/">热门问题</a></li>
+    <li role="presentation" {{if .tab}}{{if eq .tab "unanswered"}}class="active" {{end}}{{end}}><a href="/q/unanswered/">未解之谜</a></li>
+</ul>
+<div class="stream-list question-stream">
+    {{if .questions}} {{range .questions}}
+    <section class="stream-list__item" id="{{.Q.Id}}">
+        <div class="qa-rank">
+            <div class="votes hidden-xs">{{.Q.Hotvote}} <small>投票</small></div>
+            <div class="answers {{if eq .Q.Ctype 1}} answered {{else if eq .Q.Ctype -1}} solved {{end}}">{{.Q.ReplyCount}}
+                <small>答案</small>
+            </div>
+            <div class="views hidden-xs">{{.Q.Views}}<small>浏览</small></div>
+        </div>
+        <div class="summary">
+            <ul class="author list-inline">
+                <li><a href="/u/{{.Q.Author}}">{{.Q.Author}}</a></li>
+                <span class="split"></span>
+                <li>{{ timesince .Q.Created}} 提问</li>
+                <span class="split"></span>
+            </ul>
+            <h2 class="title"><a href="/q/{{.Q.Id}}/" title="{{.Q.Title}}">{{.Q.Title}}</a></h2>
+            <ul class="taglist--inline">
+                {{range $i, $v := .Tags}}
+                <li><a href="/q/tag/{{$v}}/">{{$v}}</a></li>
+                {{end}}
+            </ul>
+        </div>
+    </section>
+    {{end}} {{else}}
+    <section class="stream-list__item" id="q-0">
+        <div class="summary">
+            <h2>
+        {{if .tab}}{{if eq .tab "lastest"}}尚无最新问题..{{end}}{{end}}
+        {{if .tab}}{{if eq .tab "hotness"}}尚无热门问题..{{end}}{{end}}
+        {{if .tab}}{{if eq .tab "unanswered"}}尚无未解之谜..{{end}}{{end}}
+            </h2>
+        </div>
+    </section>
+    {{end}}
+</div>
+<nav class="text-center"> {{if .paginator.HasPages}}
+    <ul class="pagination">
+        {{if .paginator.HasPrev}}
+        <li><a href="{{.paginator.PageLinkFirst}}">首页</a></li>
+        <li><a href="{{.paginator.PageLinkPrev}}">&laquo;</a></li>
+        {{else}}
+        <li class="disabled"><a>首页</a></li>
+        <li class="disabled"><a>&raquo;</a></li>
+        {{end}} {{range $index, $page := .paginator.Pages}}
+        <li{{if $.paginator.IsActive .}} class="active" {{end}}>
+            <a href="{{$.paginator.PageLink $page}}">{{$page}}</a>
+            </li>
+            {{end}} {{if .paginator.HasNext}}
+            <li><a href="{{.paginator.PageLinkNext}}">&raquo;</a></li>
+            <li><a href="{{.paginator.PageLinkLast}}">未页</a></li>
+            {{else}}
+            <li class="disabled"><a>&raquo;</a></li>
+            <li class="disabled"><a>未页</a></li>
+            {{end}}
+    </ul>
+    {{end}}
+</nav>
