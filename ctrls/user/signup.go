@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/validation"
 	"github.com/wcreate/lawoto/ctrls"
 	"github.com/wcreate/lawoto/models"
@@ -77,12 +76,6 @@ func (self *SignupController) Post() {
 		return
 	}
 
-	if err := u.Read("Email"); err != orm.ErrNoRows {
-		flash.Error("此账号已存在不能使用~")
-		flash.Store(&self.Controller)
-		return
-	}
-
 	if !setting.Cpt.VerifyReq(self.Ctx.Request) {
 		flash.Error("验证码不正确~")
 		flash.Store(&self.Controller)
@@ -97,6 +90,7 @@ func (self *SignupController) Post() {
 	u.Role = 1
 	u.Updated = time.Now()
 	u.LastLoginTime = u.Updated
+	u.Avatar = setting.Default_Avatar
 
 	if err := u.Insert(); err != nil {
 		flash.Error("用户注册信息写入数据库时发生错误~")

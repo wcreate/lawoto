@@ -50,6 +50,7 @@ func init() {
 	beego.Router("/u/signin/", &user.SigninController{})
 	beego.Router("/u/signout/", &user.SignoutController{})
 	beego.Router("/u/settings/", &user.SettingsController{})
+	beego.Router("/upload/avatar/", &user.AvatarController{})
 
 	//  个人主页
 	beego.Router("/u/:name([A-Za-z]+)/", &user.HomeController{})

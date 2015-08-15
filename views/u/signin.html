@@ -13,7 +13,7 @@
             <form action="/u/signin" method="POST" role="form" class="mt30">
                 <div class="form-group">
                     <label for="email" class="required control-label">Email</label>
-                    <input type="email" class="form-control" name="email" required placeholder="hello@163.com"> {{if .xsrfdata}}{{.xsrfdata}}{{end}}
+                    <input type="email" class="form-control" name="email" required placeholder="hello@163.com"> {{ .xsrfdata }}
                 </div>
                 <div class="form-group">
                     <label for="password" class="required control-label">密码</label>
@@ -22,8 +22,8 @@
                 <div class="form-group clearfix">
                     <div class="checkbox pull-left">
                         <label>
-                            <input name="remember" type="checkbox" value="1" checked> 记住登录状态</label>
-                        <a href="/u/forgot">找回密码</a> |
+                            <input name="remember" type="checkbox" value="1" checked> 记住登录状态</label> | 
+                        <a href="/u/forgot">找回密码</a> 
                     </div>
                     <button type="submit" class="btn btn-primary pull-right pl20 pr20">登录</button>
                 </div>

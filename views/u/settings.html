@@ -13,7 +13,7 @@
                 </nav>
             </div>
             <div id="main" class="settings col-md-10 form-horizontal">
-                <h2 class="h3 mt30 post-title">个人资料</h2>
+                <h2 class="h3 mt30 post-title">个人资料</h2>{{template "msgerr.html".}}
                 <div class="row mt30">
                     <div class="col-md-3 col-md-push-9">
                         <img class="avatar-128" src="{{.u.Avatar}}" alt="头像" />
@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label for="name" class="required control-label col-sm-3">用户名</label>
                                 <div class="col-sm-9">
-                                    <input name="username" type="text" maxlength="32" placeholder="用户名唯一" class="form-control" value="{{.u.Username}}" required />
+                                    <input name="Username" type="text" maxlength="32" placeholder="用户名唯一" class="form-control" value="{{.u.Username}}" required />
                                     <span class="help-block">用户名 90 天内只能修改一次</span>
                                 </div>
                             </div>
@@ -36,55 +36,57 @@
                                 <label class="control-label col-sm-3">性别</label>
                                 <div class="col-sm-9">
                                     <label class="radio-inline">
-                                        <input name="gender" type="radio" id="sex-none" value="0" {{if eq .u.Sex 0}}checked {{end}}/> 保密</label>
+                                        <input name="Gender" type="radio" id="sex-none" value="0" {{if eq .u.Gender 0}}checked {{end}}/> 保密</label>
                                     <label class="radio-inline">
-                                        <input name="gender" type="radio" id="sex-male" value="1" {{if eq .u.Sex 1}}checked {{end}}/> 男</label>
+                                        <input name="Gender" type="radio" id="sex-male" value="1" {{if eq .u.Gender 1}}checked {{end}}/> 男</label>
                                     <label class="radio-inline">
-                                        <input name="gender" type="radio" id="sex-female" value="2" {{if eq .u.Sex 2}}checked {{end}}/> 女</label>
+                                        <input name="Gender" type="radio" id="sex-female" value="2" {{if eq .u.Gender 2}}checked {{end}}/> 女</label>
                                 </div>
                             </div>
+                            {{/*}}
                             <div class="form-group">
                                 <label for="setting-birthday" class="control-label col-sm-3">生日</label>
                                 <div class="col-sm-9">
-                                    <input name="birthday" id="setting-birthday" type="text" placeholder="格式 YYYY-MM-DD" value="{{.u.Birth}}" class="form-control" />
+                                    <input name="Birth" id="setting-birthday" type="text" placeholder="格式 YYYY-MM-DD" value="{{.u.Birth}}" class="form-control" />
                                 </div>
                             </div>
+                            {{*/}}
                             <div class="form-group">
                                 <label for="setting-city" class="control-label col-sm-3">现居城市</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" autocomplete="off" name="city" data-value="" id="setting-city" placeholder="如：杭州市" value="{{.u.City}}">
+                                    <input type="text" class="form-control" autocomplete="off" name="City" data-value="" id="setting-city" placeholder="如：杭州市" value="{{.u.City}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="setting-company" class="control-label col-sm-3">公司地址</label>
                                 <div class="col-sm-9">
-                                    <input name="address" id="setting-company" type="text" maxlength="32" placeholder="详细通讯地址" class="form-control" value="{{.u.Company}}" />
+                                    <input name="Company" id="setting-company" type="text" maxlength="32" placeholder="详细通讯地址" class="form-control" value="{{.u.Company}}" />
                                     <span class="help-block">此地址联系使用，不会公开给第三方</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="setting-address" class="control-label col-sm-3">通讯地址</label>
                                 <div class="col-sm-9">
-                                    <input name="address" id="setting-address" type="text" maxlength="32" placeholder="详细通讯地址" class="form-control" value="{{.u.Address}}" />
+                                    <input name="Address" id="setting-address" type="text" maxlength="32" placeholder="详细通讯地址" class="form-control" value="{{.u.Address}}" />
                                     <span class="help-block">此地址将用于寄送纪念品以及活动报名使用，不会公开给第三方</span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="setting-mobile" class="control-label col-sm-3">个人网站</label>
+                                <label for="setting-mobile" class="control-label col-sm-3">移动电话</label>
                                 <div class="col-sm-9">
-                                    <input name="homepage" id="setting-mobile" type="url" placeholder="13x88888888" value="{{.u.Mobile}}" class="form-control mono" />
+                                    <input name="Mobile" id="setting-mobile" type="text" placeholder="13x88888888" value="{{.u.Mobile}}" class="form-control mono" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="setting-homepage" class="control-label col-sm-3">个人网站</label>
                                 <div class="col-sm-9">
-                                    <input name="homepage" id="setting-homepage" type="url" placeholder="http://example.com" value="{{.u.Website}}" class="form-control mono" />
+                                    <input name="Website" id="setting-homepage" type="url" placeholder="http://example.com" value="{{.u.Website}}" class="form-control mono" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="setting-description" class="control-label col-sm-3">自我简介</label>
                                 <div class="col-sm-9">
-                                    <textarea name="description" id="setting-description" class="form-control mono" rows="6">{{.u.Content}}</textarea>
+                                    <textarea name="Content" id="setting-description" class="form-control mono" rows="6">{{.u.Content}}</textarea>
                                 </div>
                             </div>
                             <div class="form-action row">

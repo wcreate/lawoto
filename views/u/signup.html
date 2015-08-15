@@ -24,8 +24,16 @@
                     <input type="password" class="form-control" name="password" required placeholder="不少于 6 位">
                 </div>
                 <div class="form-group">
-                    <label class="required control-label" for="repassword">重复密码</label>
+                    <label class="required control-label" for="repassword">密码确认</label>
                     <input type="password" id="repassword" name="repassword" placeholder="重复密码" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label ">用户类型：
+                        <label class="radio-inline">
+                            <input name="ctype" type="radio" value="0" checked /> 普通用户</label>
+                        <label class="radio-inline">
+                            <input name="ctype" type="radio" value="1" /> 律师</label>
+                    </label>
                 </div>
                 <div class="form-group">
                     <label class="required control-label" for="captcha">验证码</label>
@@ -46,7 +54,8 @@
         <div class="col-md-4 col-md-push-3 col-sm-12 login-wrap">
             <h1 class="h4 text-muted login-title">说明</h1>
             <blockquote>
-                <p>请使用真实电子邮箱注册，邮箱将用来注册验证，我们不会将你的邮箱地址分享给任何人。已经注册帐户的用户，请直接登录。</p>
+                <p>请使用真实电子邮箱注册，邮箱将用来注册验证，我们不会将你的邮箱地址分享给任何人。<br/>如果您是律师，我们将联系您，并确认是否为律师。<br/>
+                已经注册帐户的用户，请直接登录。</p>
             </blockquote>
             <div class="form-group clearfix">
                 <a href="/u/signin" class="btn btn-primary pl20 pr20 pull-left">登录</a>

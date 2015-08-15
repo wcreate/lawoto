@@ -113,10 +113,10 @@ func (u *User) Insert() error {
 	return err
 }
 
-func (u *User) Update(fields ...string) error {
+func (u *User) Update(fields ...string) (int64, error) {
 	// fields = append(fields, "Updated")
-	_, err := orm.NewOrm().Update(u, fields...)
-	return err
+	row, err := orm.NewOrm().Update(u, fields...)
+	return row, err
 }
 
 func (u *User) Delete() error {
@@ -124,19 +124,35 @@ func (u *User) Delete() error {
 	return err
 }
 
+func Users() orm.QuerySeter {
+	return orm.NewOrm().QueryTable("User")
+}
+
 func (u *User) ValidateEmail() *User {
 	u.Valid.Email(u.Email, "Email").Message("Email格式不合符规格!")
 	u.Valid.MaxSize(u.Email, 120, "Email").Message("Email最大长度不能超过120!")
+
+	if err := u.Read("Email"); err != orm.ErrNoRows {
+		u.Valid.SetError("Username", "Email已被注册使用了，请换其它的Email!")
+		return u
+	}
 	return u
 }
 
 func (u *User) ValidateUserName() *User {
 	u.Valid.Match(u.Username, regexp.MustCompile("^[\\x{4e00}-\\x{9fa5}A-Z0-9a-z_-]{4,30}$"),
 		"Username").Message("用户名是为永久性设定,不能少于4个字或多于30个字,请慎重考虑,不能为空!")
+	//
 	if reserveUsers[u.Username] != "" {
 		u.Valid.SetError("Username", "账号不允许使用!")
 		return u
 	}
+	//
+	if err := u.Read("Username"); err != orm.ErrNoRows {
+		u.Valid.SetError("Username", "此账号已存在不能使用!")
+		return u
+	}
+
 	return u
 }
 
@@ -146,6 +162,9 @@ func (u *User) ValidatePassword() *User {
 	return u
 }
 
-func Users() orm.QuerySeter {
-	return orm.NewOrm().QueryTable("User")
+func (u *User) ValidateMobile() *User {
+	if u.Mobile != "" {
+		u.Valid.Mobile(u.Mobile, "Mobile").Message("移动电话格式不对，请输入11位的电话号码。")
+	}
+	return u
 }

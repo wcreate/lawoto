@@ -32,23 +32,27 @@ type RootController struct {
 //用户等级划分：正数是普通用户，负数是管理员各种等级划分，为0则尚未注册
 func (self *BaseController) Prepare() {
 
-	// 从session里读出登录信息
-	self.Username, _ = self.GetSession("username").(string)
-	self.Uid, _ = self.GetSession("userid").(int64)
-	self.Role, _ = self.GetSession("userrole").(int64)
-	self.Email, _ = self.GetSession("useremail").(string)
-	usercontent, _ := self.GetSession("usercontent").(string)
-	useravatar, _ := self.GetSession("useravatar").(string)
-
-	// 把登录信息写入模板容器
-	self.Data["userid"] = self.Uid
-	self.Data["username"] = self.Username
-	self.Data["userrole"] = self.Role
-	self.Data["useremail"] = self.Email
-	self.Data["usercontent"] = usercontent
-	self.Data["useravatar"] = useravatar
-
 	self.Data["xsrfdata"] = template.HTML(self.XsrfFormHtml())
+	self.Data["xsrf_token"] = self.XsrfToken()
+
+	// 从session里读出登录信息
+	self.Uid, _ = self.GetSession("userid").(int64)
+	if self.Uid != 0 {
+		self.Username, _ = self.GetSession("username").(string)
+
+		self.Role, _ = self.GetSession("userrole").(int64)
+		self.Email, _ = self.GetSession("useremail").(string)
+		usercontent, _ := self.GetSession("usercontent").(string)
+		useravatar, _ := self.GetSession("useravatar").(string)
+
+		// 把登录信息写入模板容器
+		self.Data["userid"] = self.Uid
+		self.Data["username"] = self.Username
+		self.Data["userrole"] = self.Role
+		self.Data["useremail"] = self.Email
+		self.Data["usercontent"] = usercontent
+		self.Data["useravatar"] = useravatar
+	}
 
 	self.Layout = "layout.html"
 	self.LayoutSections = make(map[string]string)

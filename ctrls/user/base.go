@@ -29,5 +29,5 @@ func (self *UserController) Prepare() {
 
 func (self *UserController) setTemplate() {
 	self.LayoutSections["Heads"] = "u/user-head.html"
-	self.LayoutSections["Scripts"] = ""
+	self.LayoutSections["Scripts"] = "u/user-scripts.html"
 }

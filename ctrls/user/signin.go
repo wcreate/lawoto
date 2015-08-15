@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/validation"
 	"github.com/wcreate/lawoto/ctrls"
 	"github.com/wcreate/lawoto/models"
 	"github.com/wcreate/lawoto/utils"
@@ -54,19 +53,6 @@ func (self *SigninController) Post() {
 	u := new(models.User)
 	u.Email = email
 	u.Password = password
-
-	u.Valid = validation.Validation{}
-	u.ValidateEmail().ValidatePassword()
-	if u.Valid.HasErrors() {
-		// validation does not pass
-		var errMsg string = ""
-		for _, err := range u.Valid.Errors {
-			errMsg += err.Message
-		}
-		flash.Error(errMsg)
-		flash.Store(&self.Controller)
-		return
-	}
 
 	if err := u.Read("Email"); err != nil {
 		flash.Error("该账号不存在~")

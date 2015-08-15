@@ -8,6 +8,8 @@ import (
 
 const (
 	Version = "0.0.1"
+
+	Default_Avatar = "/static/oto/img/davatar.jpg"
 )
 
 var (
