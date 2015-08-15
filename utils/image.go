@@ -6,7 +6,6 @@ import (
 	"os"
 	"os/exec"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"image"
@@ -380,17 +379,6 @@ func DelLostImages(oldz string, newz string) {
 		}
 	}
 
-}
-
-// 根据用户邮箱显示Gravatar头像
-func Gravatar(email string, height int) string {
-	if email != "" && height != 0 {
-		// 将邮箱转换成MD5哈希值，并设置图像的大小为height像素
-		usergravatar := `http://www.gravatar.com/avatar/` + MD5(email) + `?s=` + strconv.Itoa(height)
-		return usergravatar
-	} else {
-		return ""
-	}
 }
 
 //PHA算法  获取图像指纹

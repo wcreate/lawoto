@@ -4,7 +4,6 @@ import (
 	"github.com/astaxie/beego/orm"
 	"github.com/wcreate/lawoto/ctrls"
 	"github.com/wcreate/lawoto/models"
-	"github.com/wcreate/lawoto/utils"
 )
 
 type QuestionListController struct {
@@ -26,16 +25,10 @@ func (self *QuestionListController) Get() {
 
 	qs := &models.Question{Id: qid}
 	if err := qs.Read(); err != orm.ErrNoRows {
-		avatar := ""
-		usr := &models.User{Id: qs.Uid}
-		if err := usr.Read(); err != orm.ErrNoRows {
-			avatar = utils.Gravatar(usr.Email, 32)
-		}
-
 		qs.Views = qs.Views + 1
 		qs.Update("Views")
 
-		self.Data["avatar"] = avatar
+		self.Data["avatar"] = models.GetAvatar(qs.Uid)
 		self.Data["q"] = *qs
 		self.Data["replys"] = *models.GetReplysByPid(qid, 0, 0, 0, "hotness")
 	} else {

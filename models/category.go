@@ -8,16 +8,25 @@ import (
 
 // category, Pid:root/category
 type Category struct {
-	Id      int64     `orm:"pk;auto"` // 标识
-	Pid     int64     `orm:"index"`   // ParentId
-	Uid     int64     `orm:"index"`   // 这里指本分类创建者
-	Order   int64     // 排序
-	Title   string    `orm:"index"`
-	Content string    `orm:"type(text);null"`
-	Created time.Time `orm:"auto_now_add;type(datetime);index"`
-	Updated time.Time `orm:"auto_now,index"`
-	Views   int64     `orm:"index"`
-	Author  string    `orm:"index"` //这里指本分类创建者
+	Id  int64 `orm:"pk;auto"` // 标识
+	Pid int64 `orm:"index"`   // ParentId
+
+	Uid    int64  `orm:"index"` // 这里指本分类创建者
+	Author string `orm:"index"` //这里指本分类创建者
+	Order  int64  // 排序
+
+	Title   string `orm:"index"`
+	Content string `orm:"type(text);null"` // 分类介绍
+
+	Created time.Time `orm:"auto_now_add;type(datetime)"`
+	Updated time.Time `orm:"auto_now"`
+
+	Hotness  float64 `orm:"index"` // 热度，Reddit算法生成
+	Hotup    int64   `orm:"index"` // 赞
+	Hotdown  int64   `orm:"index"` // 贬
+	Hotscore int64   `orm:"index"` // Hotup - Hotdown
+	Hotvote  int64   `orm:"index"` // Hotup + Hotdown
+	Views    int64   `orm:"index"`
 }
 
 //-----------------------------------------------------------------------------

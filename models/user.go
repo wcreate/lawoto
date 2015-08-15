@@ -6,6 +6,7 @@ import (
 
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/validation"
+	"github.com/wcreate/lawoto/setting"
 )
 
 const (
@@ -48,6 +49,7 @@ type User struct {
 	Email    string `orm:"index;unique"` // 电邮
 	Salt     string // 加密的盐值
 	Password string // 加密之后的密文
+	Cfmcode  string // 邮件确认码
 
 	Username string `orm:"index;unique"` // 用户名
 	Nickname string `orm:"index"`        // 昵称
@@ -87,10 +89,10 @@ type UserBind struct {
 
 type UserStats struct {
 	Id        int64   //
-	UId       int64   `orm:"index"` // 用户标识
-	Rank      int64   `orm:"index"` // 声望值
-	Star      int64   `orm:"index"` // 枚徽章
-	Hotness   float64 `orm:"index"` // 热度，Reddit算法生成
+	UId       int64   `orm:"index;unique"` // 用户标识
+	Rank      int64   `orm:"index"`        // 声望值
+	Star      int64   `orm:"index"`        // 枚徽章
+	Hotness   float64 `orm:"index"`        // 热度，Reddit算法生成
 	Hotup     int64   // 赞
 	Hotdown   int64   // 贬
 	Hotscore  int64   // Hotup - Hotdown
@@ -110,6 +112,9 @@ func (u *User) Read(fields ...string) error {
 
 func (u *User) Insert() error {
 	_, err := orm.NewOrm().Insert(u)
+	//
+	//us := &UserStats{Uid: id}
+	//orm.NewOrm().Insert(us)
 	return err
 }
 
@@ -126,6 +131,24 @@ func (u *User) Delete() error {
 
 func Users() orm.QuerySeter {
 	return orm.NewOrm().QueryTable("User")
+}
+
+func (u *User) ReadOneOnly(fields ...string) error {
+	fields = append(fields, "Id")
+	return Users().Filter("Id", u.Id).One(u, fields...)
+}
+
+func GetAvatar(uid int64) (avatar string) {
+	u := &User{Id: uid}
+	avatar = setting.Default_Avatar
+	if err := u.ReadOneOnly("Avatar"); err != orm.ErrNoRows {
+		avatar = u.Avatar
+	}
+
+	if avatar == "" {
+		avatar = setting.Default_Avatar
+	}
+	return avatar
 }
 
 func (u *User) ValidateEmail() *User {

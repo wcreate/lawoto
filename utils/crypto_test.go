@@ -17,5 +17,8 @@ func TestMain(t *testing.T) {
 	v2, _ := AesEncrypt("123456")
 	t.Log("123456", v2)
 
+	v3, _ := AesEncrypt("1111")
+	t.Log("mm", v3)
+
 	t.Log(HmacSha256("plaintext", GetSalt(8)))
 }

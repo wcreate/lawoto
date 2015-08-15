@@ -49,9 +49,11 @@ func init() {
 	orm.RegisterModel(new(User), new(UserBind), new(UserStats))
 	orm.RegisterModel(new(Question), new(Reply), new(QuestionMark), new(AnswerMark))
 	orm.RegisterModel(new(Category))
+	orm.RegisterModel(new(Blog))
+	orm.RegisterModel(new(Comment))
 
-	force := false  // drop table 后再建表
-	verbose := true // 打印执行过程
+	force := false                                 // drop table 后再建表
+	verbose, _ := beego.AppConfig.Bool("SqlLogOn") // 打印执行过程
 	// 遇到错误立即返回
 	err = orm.RunSyncdb(dbname, force, verbose)
 	if err != nil {

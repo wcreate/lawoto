@@ -10,24 +10,28 @@ import (
 
 // Reply,Pid:Question
 type Reply struct {
-	Id                int64     `orm:"pk;auto"` // 回答标识
-	Uid               int64     `orm:"index"`   // 用户标识
-	Pid               int64     `orm:"index"`   // Question id
-	Order             int64     // 排序，暂时未使用到
-	Ctype             int64     `orm:"index"`                             // -1:游客, 1:会员
-	Content           string    `orm:"type(text);null"`                   // 回答内容
-	Attachment        string    `orm:"type(text);null"`                   // 回答附件
-	Created           time.Time `orm:"auto_now_add;type(datetime);index"` //
-	Updated           time.Time `orm:"type(datetime);index"`              //
-	Hotness           float64   `orm:"index"`                             // 热度，Reddit算法生成
-	Hotup             int64     `orm:"index"`                             // 赞
-	Hotdown           int64     `orm:"index"`                             // 贬
-	Hotscore          int64     `orm:"index"`                             // Hotup - Hotdown
-	Hotvote           int64     `orm:"index"`                             // Hotup + Hotdown
-	Views             int64     `orm:"index"`                             // 浏览数
-	Author            string    `orm:"index"`                             //
-	ReplyTime         time.Time `orm:"type(datetime);null"`               //
-	ReplyCount        int64     `orm:"index"`                             //
+	Id    int64 `orm:"pk;auto"` // 回答标识
+	Uid   int64 `orm:"index"`   // 用户标识
+	Pid   int64 `orm:"index"`   // Question id
+	Order int64 // 排序，暂时未使用到
+
+	Ctype      int64  `orm:"index"`           // -1:游客, 1:会员
+	Content    string `orm:"type(text);null"` // 回答内容
+	Attachment string `orm:"size(512);null"`  // 回答附件
+	Author     string `orm:"index"`           //
+
+	Created time.Time `orm:"auto_now_add;type(datetime);index"` //
+	Updated time.Time `orm:"type(datetime);index"`              //
+
+	Hotness  float64 `orm:"index"` // 热度，Reddit算法生成
+	Hotup    int64   `orm:"index"` // 赞
+	Hotdown  int64   `orm:"index"` // 贬
+	Hotscore int64   `orm:"index"` // Hotup - Hotdown
+	Hotvote  int64   `orm:"index"` // Hotup + Hotdown
+	Views    int64   `orm:"index"` // 浏览数
+
+	ReplyTime         time.Time `orm:"type(datetime);null"` //
+	ReplyCount        int64     `orm:"index"`               //
 	ReplyLastUserId   int64     //
 	ReplyLastUsername string    //
 }

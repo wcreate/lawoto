@@ -62,7 +62,7 @@ func SmcTimeSince(timeAt time.Time) string {
 	return output
 }
 
-//获取这个小时的开始点
+// 获取这个小时的开始点
 func ThisHour() time.Time {
 	t := time.Now()
 	year, month, day := t.Date()
@@ -71,7 +71,7 @@ func ThisHour() time.Time {
 	return time.Date(year, month, day, hour, 0, 0, 0, time.UTC)
 }
 
-//获取今天的开始点
+// 获取今天的开始点
 func ThisDate() time.Time {
 	t := time.Now()
 	year, month, day := t.Date()
@@ -79,7 +79,7 @@ func ThisDate() time.Time {
 	return time.Date(year, month, day, 0, 0, 0, 0, time.UTC)
 }
 
-//获取这周的开始点
+// 获取这周的开始点
 func ThisWeek() time.Time {
 	t := time.Now()
 	year, month, day := t.AddDate(0, 0, -1*int(t.Weekday())).Date()
@@ -87,7 +87,7 @@ func ThisWeek() time.Time {
 	return time.Date(year, month, day, 0, 0, 0, 0, time.UTC)
 }
 
-//获取这月的开始点
+// 获取这月的开始点
 func ThisMonth() time.Time {
 	t := time.Now()
 	year, month, _ := t.Date()
@@ -95,7 +95,7 @@ func ThisMonth() time.Time {
 	return time.Date(year, month, 1, 0, 0, 0, 0, time.UTC)
 }
 
-//获取今年的开始点
+// 获取今年的开始点
 func ThisYear() time.Time {
 	t := time.Now()
 	year, _, _ := t.Date()

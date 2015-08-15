@@ -37,22 +37,21 @@ func (self *BaseController) Prepare() {
 
 	// 从session里读出登录信息
 	self.Uid, _ = self.GetSession("userid").(int64)
-	if self.Uid != 0 {
-		self.Username, _ = self.GetSession("username").(string)
 
-		self.Role, _ = self.GetSession("userrole").(int64)
-		self.Email, _ = self.GetSession("useremail").(string)
-		usercontent, _ := self.GetSession("usercontent").(string)
-		useravatar, _ := self.GetSession("useravatar").(string)
+	self.Username, _ = self.GetSession("username").(string)
 
-		// 把登录信息写入模板容器
-		self.Data["userid"] = self.Uid
-		self.Data["username"] = self.Username
-		self.Data["userrole"] = self.Role
-		self.Data["useremail"] = self.Email
-		self.Data["usercontent"] = usercontent
-		self.Data["useravatar"] = useravatar
-	}
+	self.Role, _ = self.GetSession("userrole").(int64)
+	self.Email, _ = self.GetSession("useremail").(string)
+	usercontent, _ := self.GetSession("usercontent").(string)
+	useravatar, _ := self.GetSession("useravatar").(string)
+
+	// 把登录信息写入模板容器
+	self.Data["userid"] = self.Uid
+	self.Data["username"] = self.Username
+	self.Data["userrole"] = self.Role
+	self.Data["useremail"] = self.Email
+	self.Data["usercontent"] = usercontent
+	self.Data["useravatar"] = useravatar
 
 	self.Layout = "layout.html"
 	self.LayoutSections = make(map[string]string)
@@ -65,7 +64,7 @@ func (self *BaseController) GetClientIP() string {
 	if len(ipport) == 2 {
 		return ipport[0]
 	}
-	return ""
+	return addr
 }
 
 // 会员或管理员前台权限认证

@@ -5,7 +5,6 @@ import (
 	"html/template"
 	"strings"
 
-	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/utils/pagination"
 	"github.com/wcreate/lawoto/ctrls"
 	"github.com/wcreate/lawoto/models"
@@ -64,13 +63,9 @@ func (self *QMainController) Get() {
 		qinfo := make([]QuestionWithInfo, results_count)
 		for i, v := range *qts {
 			qinfo[i].Q = v
+
 			//
-			avatar := ""
-			u := &models.User{Id: v.Uid}
-			if err := u.Read(); err != orm.ErrNoRows {
-				avatar = utils.Gravatar(u.Email, 40)
-			}
-			qinfo[i].Avatar = avatar
+			qinfo[i].Avatar = models.GetAvatar(v.Uid)
 
 			//
 			if v.Tags != "" {
