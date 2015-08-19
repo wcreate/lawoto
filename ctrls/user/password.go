@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/astaxie/beego"
-	"github.com/szlanny/oto/utils"
+	"github.com/wcreate/lawoto/utils"
 )
 
 type PasswordController struct {
