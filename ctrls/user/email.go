@@ -2,13 +2,14 @@ package user
 
 import (
 	"fmt"
+	"net/smtp"
 	"strconv"
 	"strings"
 	"time"
 
 	"github.com/astaxie/beego"
-	"github.com/szlanny/oto/utils"
 	"github.com/wcreate/lawoto/setting"
+	"github.com/wcreate/lawoto/utils"
 )
 
 type EmailController struct {
@@ -55,9 +56,13 @@ func (self *EmailController) Post() {
 	emailbody = fmt.Sprintf(emailbody, self.U.Username, self.U.Cfmcode, self.U.Cfmcode, self.U.Cfmcode)
 
 	subject := "登录邮箱地址修改"
+	m := utils.NewHTMLMessage(subject, emailbody)
+	m.From = setting.EmailUser
+	m.To = []string{self.U.Email}
+	host := strings.Split(setting.EmailHost, ":")[0]
 
-	if err := utils.SendMail(setting.EmailUser, setting.EmailPasswd, setting.EmailHost,
-		self.U.Email, subject, emailbody, "html"); err != nil {
+	if err := utils.Send(setting.EmailHost,
+		smtp.PlainAuth("", setting.EmailUser, setting.EmailPasswd, host), m); err != nil {
 		flash.Error("发送确认邮件失败，Email未修改!", fmt.Sprint(err))
 		flash.Store(&self.Controller)
 		return

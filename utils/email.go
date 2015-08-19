@@ -1,60 +1,147 @@
 package utils
 
 import (
+	"bytes"
+	"encoding/base64"
+	"fmt"
+	"io/ioutil"
 	"net/smtp"
+	"path/filepath"
 	"strings"
+	"time"
 )
 
-/**
-* user : example@example.com login smtp server user
-* password: xxxxx login smtp server password
-* host: smtp.example.com:port   smtp.163.com:25
-* to: example@example.com;example1@163.com;example2@sina.com.cn;...
-* subject:The subject of mail
-* body: The content of mail
-* mailtype: mail type html or text
- */
-func SendMail(user, password, host, to, subject, body, mailtype string) error {
-	hp := strings.Split(host, ":")
-	auth := smtp.PlainAuth("", user, password, hp[0])
-	var content_type string
-	if mailtype == "html" {
-		content_type = "Content-Type: text/" + mailtype + "; charset=UTF-8"
-	} else {
-		content_type = "Content-Type: text/plain" + "; charset=UTF-8"
-	}
-	msg := []byte("To: " + to + "\r\nFrom: " + user + "<" + user + ">\r\nSubject: " + subject + "\r\n" + content_type + "\r\n\r\n" + body)
-	send_to := strings.Split(to, ";")
-	err := smtp.SendMail(host, auth, user, send_to, msg)
-	return err
+type Attachment struct {
+	Filename string
+	Data     []byte
+	Inline   bool
 }
 
-func GetSensitiveInfoRemovedEmail(email string) string {
-	const (
-		mail_separator_sign = "@"
-		min_mail_id_length  = 2
-	)
+type Message struct {
+	From            string
+	To              []string
+	Cc              []string
+	Bcc             []string
+	Subject         string
+	Body            string
+	BodyContentType string
+	Attachments     map[string]*Attachment
+}
 
-	emailSepPos := strings.Index(email, mail_separator_sign)
-
-	if emailSepPos < 0 {
-		return email
+func (m *Message) attach(file string, inline bool) error {
+	data, err := ioutil.ReadFile(file)
+	if err != nil {
+		return err
 	}
 
-	mailId, mailDomain := email[:emailSepPos], email[emailSepPos+1:]
+	_, filename := filepath.Split(file)
 
-	if mailIdLength := len(mailId); mailIdLength > min_mail_id_length {
-		firstChar, lastChar := string(mailId[0]), string(mailId[mailIdLength-1])
-		stars := "***"
-		switch mailIdLength - min_mail_id_length {
-		case 1:
-			stars = "*"
-		case 2:
-			stars = "**"
+	m.Attachments[filename] = &Attachment{
+		Filename: filename,
+		Data:     data,
+		Inline:   inline,
+	}
+
+	return nil
+}
+
+func (m *Message) Attach(file string) error {
+	return m.attach(file, false)
+}
+
+func (m *Message) Inline(file string) error {
+	return m.attach(file, true)
+}
+
+func newMessage(subject string, body string, bodyContentType string) *Message {
+	m := &Message{Subject: subject, Body: body, BodyContentType: bodyContentType}
+
+	m.Attachments = make(map[string]*Attachment)
+
+	return m
+}
+
+// NewMessage returns a new Message that can compose an email with attachments
+func NewMessage(subject string, body string) *Message {
+	return newMessage(subject, body, "text/plain")
+}
+
+// NewMessage returns a new Message that can compose an HTML email with attachments
+func NewHTMLMessage(subject string, body string) *Message {
+	return newMessage(subject, body, "text/html")
+}
+
+// ToList returns all the recipients of the email
+func (m *Message) Tolist() []string {
+	tolist := m.To
+
+	for _, cc := range m.Cc {
+		tolist = append(tolist, cc)
+	}
+
+	for _, bcc := range m.Bcc {
+		tolist = append(tolist, bcc)
+	}
+
+	return tolist
+}
+
+// Bytes returns the mail data
+func (m *Message) Bytes() []byte {
+	buf := bytes.NewBuffer(nil)
+
+	buf.WriteString("From: " + m.From + "\n")
+
+	t := time.Now()
+	buf.WriteString("Date: " + t.Format(time.RFC822) + "\n")
+
+	buf.WriteString("To: " + strings.Join(m.To, ",") + "\n")
+	if len(m.Cc) > 0 {
+		buf.WriteString("Cc: " + strings.Join(m.Cc, ",") + "\n")
+	}
+
+	buf.WriteString("Subject: " + m.Subject + "\n")
+	buf.WriteString("MIME-Version: 1.0\n")
+
+	boundary := "f46d043c813270fc6b04c2d223da"
+
+	if len(m.Attachments) > 0 {
+		buf.WriteString("Content-Type: multipart/mixed; boundary=" + boundary + "\n")
+		buf.WriteString("--" + boundary + "\n")
+	}
+
+	buf.WriteString(fmt.Sprintf("Content-Type: %s; charset=utf-8\n\n", m.BodyContentType))
+	buf.WriteString(m.Body)
+	buf.WriteString("\n")
+
+	if len(m.Attachments) > 0 {
+		for _, attachment := range m.Attachments {
+			buf.WriteString("\n\n--" + boundary + "\n")
+
+			if attachment.Inline {
+				buf.WriteString("Content-Type: message/rfc822\n")
+				buf.WriteString("Content-Disposition: inline; filename=\"" + attachment.Filename + "\"\n\n")
+
+				buf.Write(attachment.Data)
+			} else {
+				buf.WriteString("Content-Type: application/octet-stream\n")
+				buf.WriteString("Content-Transfer-Encoding: base64\n")
+				buf.WriteString("Content-Disposition: attachment; filename=\"" + attachment.Filename + "\"\n\n")
+
+				b := make([]byte, base64.StdEncoding.EncodedLen(len(attachment.Data)))
+				base64.StdEncoding.Encode(b, attachment.Data)
+				buf.Write(b)
+			}
+
+			buf.WriteString("\n--" + boundary)
 		}
-		mailId = firstChar + stars + lastChar
+
+		buf.WriteString("--")
 	}
 
-	result := mailId + mail_separator_sign + mailDomain
-	return result
+	return buf.Bytes()
+}
+
+func Send(addr string, auth smtp.Auth, m *Message) error {
+	return smtp.SendMail(addr, auth, m.From, m.Tolist(), m.Bytes())
 }
