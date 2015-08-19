@@ -5,7 +5,7 @@ import (
 	"github.com/astaxie/beego/cache"
 	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/utils/captcha"
-	"github.com/szlanny/oto/utils"
+	"github.com/wcreate/lawoto/utils"
 )
 
 const (
