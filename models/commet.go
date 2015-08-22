@@ -2,6 +2,7 @@ package models
 
 import "time"
 
+// 评论表
 // Comment, Pid:question/reply
 type Comment struct {
 	Id    int64 `orm:"pk;auto"` // 标识

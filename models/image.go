@@ -2,6 +2,7 @@ package models
 
 import "time"
 
+// 图片上传的记录
 type Image struct {
 	Id  int64
 	Uid int64 `orm:"index"`

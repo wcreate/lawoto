@@ -6,6 +6,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
+// 分类信息
 // category, Pid:root/category
 type Category struct {
 	Id  int64 `orm:"pk;auto"` // 标识

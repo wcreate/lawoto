@@ -43,6 +43,7 @@ var (
 	}
 )
 
+// 用户基本信息
 type User struct {
 	Id       int64  `orm:"pk;auto"`
 	Pid      int64  // 用在归属地 归属学校 归属组织 等方面
@@ -79,6 +80,7 @@ type User struct {
 	Valid validation.Validation `orm:"-"`
 }
 
+// 用户与第三系统的绑定信息
 type UserBind struct {
 	Id        int64  //
 	UId       int64  `orm:"index"` // 用户标识
@@ -87,6 +89,7 @@ type UserBind struct {
 	BindInfo  string `orm:"size(1024)"` // 绑定附加信息
 }
 
+// 用户统计信息
 type UserStats struct {
 	Id        int64   //
 	UId       int64   `orm:"index;unique"` // 用户标识

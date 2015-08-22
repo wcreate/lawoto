@@ -8,6 +8,7 @@ import (
 	"github.com/wcreate/lawoto/setting"
 )
 
+// 问题回复表
 // Reply,Pid:Question
 type Reply struct {
 	Id    int64 `orm:"pk;auto"` // 回答标识
