@@ -1,7 +1,7 @@
 package models
 
 // 律师信息
-type Category struct {
+type Lawyer struct {
 	Id          int64  `orm:"pk;auto"` // 标识
 	Uid         int64  `orm:"index"`   //
 	Region      string // 地域
