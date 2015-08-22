@@ -20,16 +20,15 @@
             <input id="searchBox" name="q" type="text" placeholder="输入关键字搜索" class="form-control" value="">
         </form>
         <ul class="menu list-inline pull-left hidden-xs">
-            <li class="menu__item"><a href="/q/lastest/">问答</a></li>
-            <li class="menu__item"><a href="/b/">文章</a></li>
-            <li class="menu__item"><a href="/e/">活动</a></li>
-            <li class="menu__item"><a href="/u/">榜单</a></li>
+            <li class="menu__item"><a href="/q/lastest/">咨询</a></li>
+            <li class="menu__item"><a href="/l/">律师</a></li>
+            <li class="menu__item"><a href="/c/">案例</a></li>
+            <li class="menu__item"><a href="/s/">服务</a></li>
             <li class="menu__item dropdown hoverDropdown">
                 <a data-toggle="dropdown" href="/sites" class="more dropdownBtn">
                     &middot;&middot;&middot;<span class="sr-only">更多</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="/t">标签</a></li>
                     <li><a href="/a">移动 App</a></li>
                 </ul>
             </li>
@@ -54,8 +53,8 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li><a href="/u/{{.username}}">我的主页</a></li>
-                    <li><a href="/u/settings">帐号设置</a></li>
                     <li><a href="/u/{{.username}}/bookmarks">收藏夹</a></li>
+                    <li><a href="/u/{{.username}}/settings">帐号设置</a></li>
                     <li class="divider"></li>
                     <li><a href="/u/signout">退出</a></li>
                     <li><a href="/faq">帮助中心</a></li>
@@ -69,10 +68,8 @@
                     <span id="messageCount" class="glyphicon glyphicon-envelope"></span>
                 </a>
             </li>
-            <li class="opts__item">
-                <a href="/u/signin" class="em ml10">登录</a>
-                <a href="/u/signup" class="em ml10">注册</a>
-            </li>
+            <li class="opts__item"><a href="/u/signin" class="em ml10">登录</a></li>
+            <li class="opts__item"><a href="/u/signup" class="em ml10">注册</a></li>
             {{end}}
         </ul>
     </nav>

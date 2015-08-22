@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 
 	"github.com/wcreate/lawoto/ctrls/answer"
+	"github.com/wcreate/lawoto/ctrls/lawyer"
 	"github.com/wcreate/lawoto/ctrls/question"
 	"github.com/wcreate/lawoto/ctrls/user"
 )
@@ -44,6 +45,9 @@ func init() {
 	beego.Router("/q/:qid:int/a/:aid:int/edit/", &answer.EditAnswerController{})
 	// hotness
 	beego.Router("/hot/a/:id:int/:name([A-Za-z]+)", &answer.LikeOrHateController{})
+
+	// 律师首页
+	beego.Router("/l", &lawyer.LawyerListController{})
 
 	// 注册
 	beego.Router("/u/signup/", &user.SignupController{})

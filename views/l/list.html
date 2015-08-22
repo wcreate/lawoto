@@ -1,0 +1,922 @@
+{{template "navbar.html".}}
+<div class="layout-two-cols clearfix">
+    <div class="what-law" style="height:78px;line-height: 78px;"><a href="/" class="mianx">首页</a> > 按服务项目找</div>
+    <ul class="find-what clearfix">
+        <li><a href="javascript:void(0)" class="active">按服务项目找</a></li>
+        <li><a href="/court">按案例经验找</a></li>
+        <li><a href="/xearch">按律师姓名找</a></li>
+    </ul>
+    <div class="layout-left">
+        <!--首行(选律师所在地）开始-->
+        <div class="srv-list-header clearfix">
+            <div class="area-select">
+                律师所在地点：
+                <span class="area-view" data-toggle="dropdown" data-target="loc_filter">
+	            <span class="name">广东 深圳</span>
+                <span class="l-xiala"><span class="caret5"></span></span>
+                </span>
+                <div class="dropdown-menu area-popup-select loc_filter">
+                    <div class="hot-city">
+                        <h5>热门：</h5>
+                        <a data-area="11_1" href="javascript:void(0);">北京</a><a data-area="31_1" href="javascript:void(0);">上海</a><a data-area="44_1" href="javascript:void(0);">广州</a><a data-area="44_3" href="javascript:void(0);">深圳</a><a data-area="12_1" href="javascript:void(0);">天津</a><a data-area="32_5" href="javascript:void(0);">苏州</a><a data-area="50_1" href="javascript:void(0);">重庆</a><a data-area="0_0" href="javascript:void(0);">全国</a> </div>
+                    <div class="pro-list">
+                        <h5>其他省份：</h5>
+                        <p><span class="spell-title">A-G：</span><a data-pid="34" href="javascript:void(0);">安徽</a> <a data-pid="35" href="javascript:void(0);">福建</a> <a data-pid="44" href="javascript:void(0);">广东</a> <a data-pid="45" href="javascript:void(0);">广西</a> <a data-pid="52" href="javascript:void(0);">贵州</a> </p>
+                        <p><span class="spell-title">H：</span><a data-pid="13" href="javascript:void(0);">河北</a> <a data-pid="41" href="javascript:void(0);">河南</a> <a data-pid="43" href="javascript:void(0);">湖南</a> <a data-pid="42" href="javascript:void(0);">湖北</a> <a data-pid="46" href="javascript:void(0);">海南</a> <a data-pid="23" href="javascript:void(0);">黑龙江</a> </p>
+                        <p><span class="spell-title">J-N：</span><a data-pid="32" href="javascript:void(0);">江苏</a> <a data-pid="22" href="javascript:void(0);">吉林</a> <a data-pid="21" href="javascript:void(0);">辽宁</a> </p>
+                        <p><span class="spell-title">Q-S：</span><a data-pid="37" href="javascript:void(0);">山东</a> <a data-pid="51" href="javascript:void(0);">四川</a> </p>
+                        <p><span class="spell-title">T-Z：</span><a data-pid="53" href="javascript:void(0);">云南</a> <a data-pid="33" href="javascript:void(0);">浙江</a> </p>
+                    </div>
+                    <div class="city-list"></div>
+                </div>
+                <span class="area-limit tool-tip" data-html="true" data-title="<strong>律师执业不受地域限制</strong>（例如北京律师可以为上海的客户处理一件位于重庆的诉讼）。但是聘请异地律师可能会产生更高沟通成本。所以除了性价比之外，如果确实需要律师出差，客户需要报销律师的差旅费用。"><i class="fds-icon-addr pngfix"></i>律师执业是否有地域限制？</span>
+            </div>
+            <div class="sort-select">
+                <div class="btn-group1">
+                    <div style="cursor:pointer" onmouseover="select_order=1" onmouseout="select_order=0">默认排序</div>
+                    <span class="arrows" onmouseover="select_order=1" onmouseout="select_order=0" style="cursor:pointer"></span>
+                    <div id="select_order" class="line-mor" style="display:none">
+                        <ul class="line-sort">
+                            <li><a data-sort="price" href="javascript:void(0);" class="null-active">报价排序</a></li>
+                            <li><a data-sort="score" href="javascript:void(0);" class="null-active">星级排序</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--首行(选律师所在地）结束-->
+        <!------------------------------------------------------------->
+        <!--传入了web律师开始-->
+        <!--搜索到了律师开始-->
+        <!--律师列表开始-->
+        <div class="law-office">
+            <div class="office-wh clearfix">
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/749/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="张明律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/b/a/5278aead56536.png" onerror="img_error(this);">
+                                <div class="opacity"></div>
+                                <span class="bao">赔付保障</span>
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">张明</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title="北京市盈科(深圳)律师事务所">北京市盈科(深圳)律...</span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 77.4%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                    <span class="you"></span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>8</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>8</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">企业顾问</span> <span class="peo">房地产纠纷</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">8年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer">协商确定</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/1700/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="周晟辉律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/9/e/53a3e11f63223.jpg" onerror="img_error(this);">
+                                <div class="opacity"></div>
+                                <span class="bao">赔付保障</span>
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">周晟辉</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title="广东天浩律师事务所">广东天浩律师事务所</span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 71.6%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                    <span class="you"></span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>19</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>8</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                                <li class="clearfix">
+                                    <span class="won">资深律师</span><span class="won">19年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>15000</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 40%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/2742/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="易爽律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/b/c/5574f523b855f.jpg" onerror="img_error(this);">
+                                <div class="opacity"></div>
+                                <span class="bao">赔付保障</span>
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">易爽</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title="广东仁皓律师事务所">广东仁皓律师事务所</span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 61.6%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                    <span class="you"></span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>12</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>4</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">企业顾问</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">12年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>9000</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 40%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/2163/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="唐瑭律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/2/d/546a0ecf84ac6.jpg" onerror="img_error(this);">
+                                <div class="opacity"></div>
+                                <span class="bao">赔付保障</span>
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">唐瑭</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 60.4%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                    <span class="you"></span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>8</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>79</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">知识产权</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">8年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>11500</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 40%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/993/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="简晓满律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/1/2/52b7cfe5ca20e.jpg" onerror="img_error(this);">
+                                <div class="opacity"></div>
+                                <span class="bao">赔付保障</span>
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">简晓满</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title="北京市盈科（深圳）律师事务所">北京市盈科（深圳）律...</span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 60%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                    <span class="you"></span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>8</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>12</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">劳动争议</span> <span class="peo">房地产纠纷</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">8年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer">协商确定</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/1045/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="何星律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/6/d/52ca8ea4717e8.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">何星</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 56.2%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>8</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>144</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">合同纠纷</span> <span class="peo">离婚纠纷</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">8年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer">协商确定</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/644/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="罗水平律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/d/c/531d5dc848f80.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">罗水平</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 60.8%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>8</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>11</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">合同纠纷</span> <span class="peo">知识产权</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">8年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>13000</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 40%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/801/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="胡昆律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/d/2/5281e7d58ecb7.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">胡昆</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 58.8%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>7</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>19</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">合同纠纷</span> <span class="peo">劳动争议</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">7年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer">协商确定</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/1200/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="孙康律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/0/2/530ee768c970f.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">孙康</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 64.8%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>8</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>16</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">合同纠纷</span> <span class="peo">劳动争议</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">8年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>30000</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 80%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/616/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="张渊律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/a/2/5267669398bb5.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">张渊</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title="广东法迈律师事务所">广东法迈律师事务所</span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 63%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>6</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>67</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">合同纠纷</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">6年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>6000</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 40%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/1051/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="朱斌律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/f/2/52ccf57456dc6.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">朱斌</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 74%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>14</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>204</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">合同纠纷</span> <span class="peo">房地产纠纷</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">资深律师</span><span class="won">14年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>16000</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 40%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/881/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="陈超明律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/7/2/5292a631a9b16.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">陈超明</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 63%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>9</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>34</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                                <li class="clearfix">
+                                    <span class="won">9年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>16000</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 40%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/659/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="旷宗彪律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/d/3/528087822562f.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">旷宗彪</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 53.6%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>4</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>24</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>20000</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 60%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/514/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="梁春阳律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/c/8/52579ff60caab.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">梁春阳</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 58.6%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>6</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>8</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                                <li class="clearfix">
+                                    <span class="won">6年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer">协商确定</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/519/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="梁智恒律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/0/f/5257df3dcac7b.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">梁智恒</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 59.4%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>4</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>3</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer">协商确定</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/556/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="钟经跃律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/a/8/526485f91945f.png" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">钟经跃</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 62.2%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>11</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>12</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                                <li class="clearfix">
+                                    <span class="won">11年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>30000</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 80%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/734/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="谢新志律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/e/5/527755e0c135d.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">谢新志</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 65.2%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>8</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>21</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                                <li class="clearfix">
+                                    <span class="won">8年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer">协商确定</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/808/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="伍舜锋律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/b/5/5282cf52f0550.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">伍舜锋</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 59.6%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>7</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>28</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                                <li class="clearfix">
+                                    <span class="won">7年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer">协商确定</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/2192/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="谷家泽律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/c/2/5473377027973.jpeg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">谷家泽</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 69.8%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>26</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>7</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                </li>
+                                <li class="clearfix">
+                                    <span class="won">资深律师</span><span class="won">26年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer">协商确定</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="loffice clearfix" style="height:252px;">
+                    <a class="off-left clearfix" target="_blank" href="/lvshi/1182/hot5084?qid=16338">
+                        <div class="office-top clearfix">
+                            <div class="img-head clearfix" style="position: relative">
+                                <img alt="李成飞律师头像" class="size-img" src="http://fds-provider2.oss-cn-qingdao.aliyuncs.com/avatar/0/5/530ac3f62c55c.jpg" onerror="img_error(this);">
+                            </div>
+                            <ul class="off-right clearfix">
+                                <li class="clearfix">
+                                    <span class="name1">李成飞</span>
+                                    <span class="work">律师</span>
+                                    <span class="sun ell">
+                            <em class="icon1"></em>
+                            广东 深圳                    </span>
+                                </li>
+                                <!-- 新增事务所 -->
+                                <li class="clearfix">
+                                    <span class="icon-office" title=""></span>
+                                </li>
+                                <!-- the-end -->
+                                <li class="clearfix">
+                                    <span class="star">
+                             <em class="gray" style="width: 70%"></em>
+                    </span>
+                                    <span class="bor">|</span>
+                                </li>
+                                <li>
+                                    <span class="year year1"><font>10</font>年经验</span>
+                                    <span class="year"><font>0</font>评价</span>
+                                    <span class="year year2"><font>22</font>案例</span>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="zhch">专长</span><span class="peo peo1">交通事故</span> <span class="peo">劳动争议</span> </li>
+                                <li class="clearfix">
+                                    <span class="won">10年经验</span></li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="price-8 clearfix">
+                            <span class="amer"><font class="doll">￥</font>45000</span>
+                            <div class="low"><span>低</span><i class="gray"><em class="orange" style="width: 100%"></em></i><span>高</span></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "footer.html".}}
